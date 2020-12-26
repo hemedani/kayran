@@ -1,0 +1,47 @@
+# POST http://localhost:8000/funql HTTP/1.1
+# content-type: application/json
+
+# {
+#     "details": {
+#         "set" : {
+#             "phone": 9381028800,
+#             "code": 111111  
+#         }
+#     },
+#     "wants": {
+#         "model": "User",
+#         "doit": "login"
+#     },
+#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
+
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+
+{
+    "details": {
+        "set": {
+            "name": "iran",
+            "enName": "iran"
+        },
+        "get": {
+            "_id": 0,
+            "name": 0,
+            "cities": {
+                "_id": 1,
+                "name": 1
+            }
+        }
+    },
+    "wants": {
+        "model": "Country",
+        "doit": "adding"
+    }
+}
+
+
+###
+# GET http://localhost:8000/ HTTP/1.1
+
+###
+# POST http://localhost:8000/ HTTP/1.1
