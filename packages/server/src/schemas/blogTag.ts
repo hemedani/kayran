@@ -10,11 +10,11 @@ export interface BlogTag {
  * represent get selection of any function
  * @interface
  */
-export interface rblogcategory extends RBase {
+export interface RBlogTag extends RBase {
 	name?: RType;
 }
 
-export const blogCategorySelectable = (depth: number = 4) => {
+export const blogTagSelectable = (depth: number = 4) => {
 	depth--;
 	const returnObj = {
 		...baseSelectableFields(),

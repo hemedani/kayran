@@ -9,7 +9,7 @@ export interface BlogCategory extends Base {
 	description: string;
 }
 
-export interface RBlogCAtegory extends RBase {
+export interface RBlogCategory extends RBase {
 	name?: RType;
 	enName?: RType;
 	iconUrl?: RType;
