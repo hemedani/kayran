@@ -1,5 +1,6 @@
 # POST http://localhost:8000/funql HTTP/1.1
 # content-type: application/json
+# token:"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vyc0lkIjoiNWZlOThkNDZmNjAyZjJkMmRiZGI2YjU0In0.W0oiBUtViIMJfvJF2sSzG0PQT1rCwc2r4blAsqSi_Tky3kvh7MBtnvwlaBjRzoWZqLVqU9MoMElaAHYMY4Ky-Q"
 
 # {
 #     "details": {
@@ -15,33 +16,51 @@
 #     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 # }
 
-POST http://localhost:8000/funql HTTP/1.1
-content-type: application/json
+# POST http://localhost:8000/funql HTTP/1.1
+# content-type: application/json
 
-{
-    "details": {
-        "set": {
-            "name": "iran",
-            "enName": "iran"
-        },
-        "get": {
-            "_id": 0,
-            "name": 0,
-            "cities": {
-                "_id": 1,
-                "name": 1
-            }
-        }
-    },
-    "wants": {
-        "model": "Country",
-        "doit": "adding"
-    }
-}
+# {
+#     "details": {
+#         "set": {
+#             "name": "iran",
+#             "enName": "iran"
+#         },
+#         "get": {
+#             "_id": 0,
+#             "name": 0,
+#             "cities": {
+#                 "_id": 1,
+#                 "name": 1
+#             }
+#         }
+#     },
+#     "wants": {
+#         "model": "Country",
+#         "doit": "adding"
+#     }
+# }
 
 
 ###
 # GET http://localhost:8000/ HTTP/1.1
 
 ###
-# POST http://localhost:8000/ HTTP/1.1
+POST http://localhost:8000/funql HTTP/1.1
+content-type: application/json
+token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vyc0lkIjoiNWZlOThkNDZmNjAyZjJkMmRiZGI2YjU0In0.W0oiBUtViIMJfvJF2sSzG0PQT1rCwc2r4blAsqSi_Tky3kvh7MBtnvwlaBjRzoWZqLVqU9MoMElaAHYMY4Ky-Q
+
+{
+    "details":{
+        "set":{
+            "name":"first tag"
+        },
+        "get":{
+            "_id": 1,
+            "name": 1
+        }
+    },
+    "wants":{
+        "model":"BlogTag",
+        "doit":"createBlogTag"
+    }
+}
