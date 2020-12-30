@@ -10,8 +10,8 @@ export interface City {
   _id: ObjectId;
   name: string;
   enName: string;
-  state: ObjectId | State;
-  country: ObjectId | Country;
+  state: State; // embedded field without relations
+  country: Country; // embedded field without relations
 }
 
 export interface RCity {

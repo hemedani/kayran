@@ -21,12 +21,5 @@ export const getCountries: GetCountriesFn = async ({ filter, getObj }) => {
       "states",
       getObj.states
     );
-  if (getObj.cities)
-    returnCountries = await populateMany(
-      returnCountries,
-      getCities,
-      "cities",
-      getObj.cities
-    );
   return returnCountries;
 };
