@@ -1,7 +1,7 @@
 import db from "../../db.ts";
 import { RCity } from "./city.ts";
 import { Country, RCountry } from "./country.ts";
-import { citySelectable, countrySelectable, fieldType } from "./index.ts";
+import { City, citySelectable, countrySelectable, fieldType } from "./index.ts";
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
 
 export interface State {
@@ -9,14 +9,15 @@ export interface State {
   name: string;
   enName: string;
   country: Country;
+  cities: City[];
 }
 
 export interface RState {
   _id?: 0 | 1;
   name?: 0 | 1;
   enName?: 0 | 1;
-  cities?: RCity;
   country?: RCountry;
+  cities?: RCity;
 }
 
 export const stateSelectable: any = (depth: number = 4) => {
