@@ -2,15 +2,9 @@ import { BlogComment, blogCommentSelectable } from "./blogComment.ts";
 import { RUser, User, userSelectable } from "./user.ts";
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
 import {
-<<<<<<< HEAD
 	BlogCategory,
 	blogCategorySelectable,
 	RBlogCategory,
-=======
-  BlogCategory,
-  blogCategorySelectable,
-  RBlogCategory,
->>>>>>> 3ffa67cb4a5702ea0f9c6fa6cfb0e99ea471fc5b
 } from "./blogCategory.ts";
 import { Base } from "./utils/bases/base.ts";
 import { BlogTag, blogTagSelectable, RBlogTag } from "./blogTag.ts";
@@ -20,38 +14,22 @@ import { RType } from "./utils/rType.ts";
 import { baseSelectableFields, RBase } from "./utils/bases/index.ts";
 import { RBlogComment } from "./blogComment.ts";
 export interface BlogPost extends Base {
-<<<<<<< HEAD
-	title: String;
-	summary: String;
-	content: String;
-	photo?: String;
+	title: string;
+	summary: string;
+	content: string;
+	photo?: string;
 	author: User;
 	blogCategories: BlogCategory[];
 	replierBlogCommentRefs: Bson.ObjectId[]; //the id of the comments of this post
 	blogTags?: BlogTag[];
 	likeUsers?: Bson.ObjectID[];
-	totalLikes?: Number; // an array of users who liked the post
-	blogComments?: BlogComment[]; // about 50 last comments are embeded here
-	promotion?: Number;
-	totalViews?: Number;
-=======
-  title: string;
-  summary: string;
-  content: string;
-  photo?: string;
-  author: User;
-  blogCategories: BlogCategory[];
-  replierBlogCommentRefs: Bson.ObjectId[]; //the id of the comments of this post
-  blogTags?: BlogTag[];
-  likeUsers?: Bson.ObjectID[];
-  totalLikes?: number; //the total number of likes fo the post
-  blogComments?: BlogComment[]; //about 50 last comments are embedded here
-  promotion?: number;
-  totalViews?: number;
->>>>>>> 3ffa67cb4a5702ea0f9c6fa6cfb0e99ea471fc5b
+	totalLikes?: number; //the total number of likes fo the post
+	blogComments?: BlogComment[]; //about 50 last comments are embedded here
+	promotion?: number;
+	totalViews?: number;
 }
 export interface RBlogPost extends RBase {
-	title?: RType;
+	tittle?: RType;
 	summary?: RType;
 	content?: RType;
 	photo?: RType;
@@ -65,7 +43,10 @@ export interface RBlogPost extends RBase {
 	blogComments?: RBlogComment;
 }
 
-<<<<<<< HEAD
+/**
+ * represent relation of city schema
+ * @param depth
+ */
 export const blogPostSelectable = (depth: number = 4): any => {
 	depth--;
 	const returnObj = {
@@ -108,54 +89,6 @@ export const blogPostSelectable = (depth: number = 4): any => {
 				},
 		  }
 		: returnObj;
-=======
-/**
- * represent relation of city schema
- * @param depth
- */
-export const blogPostSelectable = (depth: number = 4): any => {
-  depth--;
-  const returnObj = {
-    ...baseSelectableFields(),
-    tittle: fieldType,
-    summary: fieldType,
-    content: fieldType,
-    photo: fieldType,
-    totalLikes: fieldType,
-    promotion: fieldType,
-    totalViews: fieldType,
-  };
-  return depth > 0
-    ? {
-        ...returnObj,
-        blogTags: {
-          type: "object",
-          optional: true,
-          props: blogTagSelectable(depth),
-        },
-        blogCategories: {
-          type: "object",
-          optional: true,
-          props: blogCategorySelectable(depth),
-        },
-        author: {
-          type: "object",
-          optional: true,
-          props: userSelectable(depth),
-        },
-        likeUsers: {
-          type: "object",
-          optional: true,
-          props: userSelectable(depth),
-        },
-        blogComments: {
-          type: "object",
-          optional: true,
-          props: blogCommentSelectable(depth),
-        },
-      }
-    : returnObj;
->>>>>>> 3ffa67cb4a5702ea0f9c6fa6cfb0e99ea471fc5b
 };
 
-export const blogPosts = db.collection<BlogPost>("BlogPosts");
+export const blogPosts = db.collection<BlogPost>("blogPosts");
