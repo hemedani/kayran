@@ -1,3 +1,5 @@
+import { getBlogTags } from "./../../blogTag/funcs/getBlogTags.ts";
+import { getBlogCategories } from "./../../blogCategory/funcs/getBlogCategories.ts";
 import { makeProjections } from "./../../../utils/makeProjections.ts";
 import { blogPosts, RBlogPost } from "./../../../schemas/blogPost.ts";
 import { BlogPost } from "../../../schemas/blogPost.ts";

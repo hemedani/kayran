@@ -1,8 +1,11 @@
+import { getBlogTags } from "./../../blogTag/funcs/getBlogTags.ts";
+import { getBlogCategories } from "./../../blogCategory/funcs/getBlogCategories.ts";
 import { BlogPost, blogPosts } from "./../../../schemas/blogPost.ts";
 
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
 import { RBlogPost } from "../../../schemas/blogPost.ts";
 import { populateMany } from "../../../utils/populateMany.ts";
+import { getBlogComments } from "../../blogComment/funcs/getBlogComments.ts";
 
 type GetBlogPostsInput = { filter: Bson.Document; getObj: RBlogPost };
 type GetBlogPostsFn = ({

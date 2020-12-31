@@ -1,8 +1,9 @@
+import { BlogComment } from "./blogComment";
 import { RType } from "./utils/rType.ts";
 import { Base, baseSelectableFields, RBase } from "./utils/bases/base.ts";
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
 import db from "../../db.ts";
-import { BlogPost, blogPostSelectable } from "./blogPost.ts";
+import { BlogPost, blogPostSelectable, RBlogPost } from "./blogPost.ts";
 import { fieldType } from "./utils/fieldType.ts";
 
 export enum CommentStatus {
@@ -16,8 +17,9 @@ export interface BlogComment extends Base {
 	email: string;
 	content: string;
 	isReplierBlogComment: boolean;
+	repliedBlogCommentId?: Bson.ObjectID;
 	commentStatus: CommentStatus;
-	BlogPost: BlogPost;
+	blogPost: BlogPost;
 	replierBlogCommentRefs: Bson.ObjectID[] /* the replied comments of a comment */;
 }
 
@@ -26,7 +28,10 @@ export interface RBlogComment extends RBase {
 	email?: RType;
 	content?: RType;
 	isReplierBlogComment?: RBlogComment;
+	repliedBlogCommentId?: RType;
 	commentStatus?: RType;
+	blogPost: RBlogPost;
+	replierBlogCommentRefs?: RBlogComment[];
 }
 
 export const blogCommentSelectable = (depth: number = 4): any => {
