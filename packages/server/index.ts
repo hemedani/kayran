@@ -1,4 +1,12 @@
-import { BlogTagDoit, blogTagFns } from "./src/functions/tag/index.ts";
+import {
+	BlogCommentDoit,
+	blogCommentFns,
+} from "./src/functions/blogComment/index.ts";
+import {
+	BlogCategoryDoit,
+	blogCategoryFns,
+} from "./src/functions/blogCategory/index.ts";
+import { BlogTagDoit, blogTagFns } from "./src/functions/blogTag/index.ts";
 import { serve } from "https://deno.land/std/http/server.ts";
 import {
 	CountryDoit,
@@ -11,15 +19,30 @@ import { parsBody } from "./src/utils/index.ts";
 const s = serve({ port: 8000 });
 console.log("http://localhost:8000/");
 
-type model = "User" | "State" | "City" | "Category" | "Country" | "BlogTag";
+type model =
+	| "User"
+	| "State"
+	| "City"
+	| "Category"
+	| "Country"
+	| "BlogTag"
+	| "BlogCategory"
+	| "BlogComment";
 
 for await (const req of s) {
 	try {
 		const reqBody = await parsBody(req);
 		const response: (
-			{ model, doit }: { model: model; doit: UserDoit | BlogTagDoit | string },
-			details: any
-		) => Promise<any> = async ({ model, doit }, details) =>
+			{
+				model,
+				doit,
+			}: {
+				model: model;
+				doit: UserDoit | BlogTagDoit | BlogCategoryDoit | string;
+			},
+			details: any,
+			context: any
+		) => Promise<any> = async ({ model, doit }, details, context) =>
 			({
 				["User"]: async () => await usrFns(doit as UserDoit, details),
 				["Country"]: async () => await countryFns(doit as CountryDoit, details),
@@ -27,17 +50,17 @@ for await (const req of s) {
 				["City"]: () => ({ _id: "city" }),
 				["Category"]: () => ({ _id: "category" }),
 				["BlogTag"]: async () =>
-					await blogTagFns(
-						doit as BlogTagDoit,
-						details,
-						req.headers.get("token")
-					),
+					await blogTagFns(doit as BlogTagDoit, details, context),
+				["BlogCategory"]: async () =>
+					await blogCategoryFns(doit as BlogCategoryDoit, details, context),
+				["BlogComment"]: async () =>
+					await blogCommentFns(doit as BlogCommentDoit, details, context),
 			}[model]());
 
 		req.respond({
 			body: JSON.stringify({
 				success: true,
-				body: await response(reqBody.wants, reqBody.details),
+				body: await response(reqBody.wants, reqBody.details, reqBody.context),
 			}),
 			status: 200,
 		});
