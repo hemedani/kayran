@@ -24,10 +24,9 @@ export const getBlogComment: GetBlogCommentFn = async ({ _id, get }) => {
 		{ projection }
 	);
 	const doRelation = async (blogComment: BlogComment, get: RBlogComment) => {
-		if (get.replierBlogCommentRefs)
-			blogComment.replierBlogCommentRefs = await getBlogComments({
-				filter: { repliedBlogCommentId: blogComment._id },
-			});
+		//dont know how to work with objectID[]
+		// if (get.replierBlogCommentRefs)
+		// populate many
 		return blogComment;
 	};
 	return foundedBlogComment

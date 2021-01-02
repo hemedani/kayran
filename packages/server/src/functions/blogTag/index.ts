@@ -11,17 +11,13 @@ const check = v.compile({
 
 export type BlogTagDoit = "createBlogTag";
 
-type BlogTagFns = (
-	doit: BlogTagDoit,
-	details: any,
-	token: string | null
-) => any;
+type BlogTagFns = (doit: BlogTagDoit, details: any, context: any) => any;
 
-export const blogTagFns: BlogTagFns = (doit, details, token) => {
+export const blogTagFns: BlogTagFns = (doit, details, context) => {
 	const checkDoit = check({ doit });
 	return checkDoit === true
 		? {
-				["createBlogTag"]: async () => await createBlogTag(token, details),
+				["createBlogTag"]: async () => await createBlogTag(details, context),
 		  }[doit]()
 		: throwError(checkDoit[0].message);
 };

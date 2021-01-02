@@ -17,13 +17,13 @@ export const getBlogComments: GetBlogCommentsFn = async ({
 	const projection = makeProjections(getObj, ["blogPost"], []);
 	const foundedBlogComments = await blogComments.find(filter, { projection });
 	let returnBlogComments = await foundedBlogComments.toArray();
-	if (getObj.blogPost)
-		returnBlogComments = await populateMany(
-			returnBlogComments,
-			getBlogPosts,
-			"blogPost",
-			getObj.blogPost
-		);
+	// if (getObj.blogPost)
+	// 	returnBlogComments = await populateMany(
+	// 		returnBlogComments,
+	// 		getBlogPosts,
+	// 		"blogPost",
+	// 		getObj.blogPost
+	// 	);
 	// if(getObj.replierBlogCommentRefs)
 	return returnBlogComments;
 };

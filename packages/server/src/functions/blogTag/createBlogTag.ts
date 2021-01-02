@@ -10,6 +10,7 @@ import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { isAdminFn, isAuthFn } from "../../utils/isAuthFn.ts";
 
 import { getBlogTag } from "./funcs/getBlogTag.ts";
+import { User } from "../../schemas/user.ts";
 
 const v = new FastestValidator();
 const check = v.compile({
@@ -36,16 +37,25 @@ interface createTagDetails {
 	get: RBlogTag;
 }
 
+interface createTagContext {
+	token: string | null;
+	user?: User;
+}
+
 type CreateTag = (
-	token: string | null,
-	details: createTagDetails
+	details: createTagDetails,
+	context: createTagContext
 ) => Promise<Partial<BlogTag>>;
 
-export const createBlogTag: CreateTag = async (token, details) => {
-	const user = token
-		? await isAuthFn(token)
-		: throwError("your token is empty");
-	await isAdminFn(user);
+/**
+ * @function
+ * Represent createWareClass (insert wareClass to db)
+ * @param details
+ * @param context
+ */
+export const createBlogTag: CreateTag = async (details, context) => {
+	//  context ? await isAuthFn(context.token) : throwError("your token is empty");
+	// await isAdminFn(user);
 	const detailsIsRight = check({ details });
 	detailsIsRight !== true && throwError(detailsIsRight[0].message);
 	const {

@@ -1,4 +1,3 @@
-import { BlogComment } from "./blogComment";
 import { RType } from "./utils/rType.ts";
 import { Base, baseSelectableFields, RBase } from "./utils/bases/base.ts";
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
@@ -19,7 +18,7 @@ export interface BlogComment extends Base {
 	isReplierBlogComment: boolean;
 	repliedBlogCommentId?: Bson.ObjectID;
 	commentStatus: CommentStatus;
-	blogPost: BlogPost;
+	// blogPost: BlogPost;
 	replierBlogCommentRefs: Bson.ObjectID[] /* the replied comments of a comment */;
 }
 
@@ -30,7 +29,7 @@ export interface RBlogComment extends RBase {
 	isReplierBlogComment?: RBlogComment;
 	repliedBlogCommentId?: RType;
 	commentStatus?: RType;
-	blogPost: RBlogPost;
+	// blogPost: RBlogPost;
 	replierBlogCommentRefs?: RBlogComment[];
 }
 
