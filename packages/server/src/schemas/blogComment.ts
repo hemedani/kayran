@@ -5,7 +5,7 @@ import db from "../../db.ts";
 import { BlogPost, blogPostSelectable, RBlogPost } from "./blogPost.ts";
 import { fieldType } from "./utils/fieldType.ts";
 
-export enum CommentStatus {
+export enum BlogCommentStatus {
 	ACCEPT,
 	PENDING,
 	REJECT,
@@ -17,8 +17,8 @@ export interface BlogComment extends Base {
 	content: string;
 	isReplierBlogComment: boolean;
 	repliedBlogCommentId?: Bson.ObjectID;
-	commentStatus: CommentStatus;
-	// blogPost: BlogPost;
+	commentStatus: BlogCommentStatus;
+	blogPost: BlogPost;
 	replierBlogCommentRefs: Bson.ObjectID[] /* the replied comments of a comment */;
 }
 
@@ -29,7 +29,7 @@ export interface RBlogComment extends RBase {
 	isReplierBlogComment?: RBlogComment;
 	repliedBlogCommentId?: RType;
 	commentStatus?: RType;
-	// blogPost: RBlogPost;
+	blogPost: RBlogPost;
 	replierBlogCommentRefs?: RBlogComment[];
 }
 

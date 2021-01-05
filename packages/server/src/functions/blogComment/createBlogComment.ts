@@ -9,7 +9,7 @@ import { throwError } from "../../utils/throwErr.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { getBlogComment } from "./funcs/getBlogComment.ts";
 import { User } from "../../schemas/user.ts";
-
+// TODO:Check it with satek
 const v = new FastestValidator();
 const check = v.compile({
 	details: {
