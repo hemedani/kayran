@@ -6,15 +6,20 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"first tag"
+		"title": "testing update blog cat",
+		"summary": "post1 sum",
+		"content": "string",
+		"blogCategoriesRef": ["5ff2c07237b1c00909ec3358"],
+		"photo":"111",
+        "blogTagsRef":["5ff2c04f37b1c00909ec3354"],
+		"promotion": 1
         },
         "get":{
-            "_id": 1,
-            "name": 1
+            
         }
     },
     "wants":{
-        "model":"BlogTag",
-        "doit":"createBlogTag"
+        "model":"BlogPost",
+        "doit":"createBlogPost"
     }
 }
