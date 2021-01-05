@@ -17,7 +17,7 @@ export interface BlogComment extends Base {
 	content: string;
 	isReplierBlogComment: boolean;
 	repliedBlogCommentId?: Bson.ObjectID;
-	commentStatus: BlogCommentStatus;
+	blogCommentStatus: BlogCommentStatus;
 	blogPost: BlogPost;
 	replierBlogCommentRefs: Bson.ObjectID[] /* the replied comments of a comment */;
 }

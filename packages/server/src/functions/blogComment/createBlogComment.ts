@@ -1,7 +1,9 @@
+import { Context } from "./../utils/context.ts";
 import {
 	BlogComment,
 	blogComments,
 	blogCommentSelectable,
+	BlogCommentStatus,
 	RBlogComment,
 } from "./../../schemas/blogComment.ts";
 import { Bson } from "https://deno.land/x/mongo@v0.20.0/deps.ts";
@@ -21,7 +23,11 @@ const check = v.compile({
 					name: { type: "string" },
 					email: { type: "email" },
 					content: { type: "string" },
-					// blogPost: { type: "string" },
+					blogPost: { type: "string" },
+					blogCommentStatus: {
+						type: "enum",
+						values: ["ACCEPT", "PENDING", "REJECT"],
+					},
 					isReplierBlogComment: { type: "boolean" },
 					repliedBlogCommentId: { type: "string" },
 				},
@@ -41,20 +47,16 @@ interface createBlogCommentDetails {
 		email: string;
 		content: string;
 		blogPost: string;
+		blogCommentStatus: BlogCommentStatus;
 		isReplierBlogComment: boolean;
 		repliedBlogCommentId?: string;
 	};
 	get: RBlogComment;
 }
 
-interface createBlogCommentContext {
-	token: string | null;
-	user?: User;
-}
-
 type CreateBlogComment = (
 	details: createBlogCommentDetails,
-	context: createBlogCommentContext
+	context: Context
 ) => Promise<Partial<BlogComment>>;
 
 /**
@@ -77,6 +79,7 @@ export const createBlogComment: CreateBlogComment = async (
 			email,
 			content,
 			blogPost,
+			blogCommentStatus,
 			isReplierBlogComment,
 			repliedBlogCommentId,
 		},
@@ -88,6 +91,7 @@ export const createBlogComment: CreateBlogComment = async (
 		email,
 		content,
 		blogPost, //this is the id of blogPost
+		blogCommentStatus,
 		isReplierBlogComment,
 		repliedBlogCommentId,
 	});

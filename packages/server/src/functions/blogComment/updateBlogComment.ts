@@ -21,7 +21,7 @@ interface UpdateBlogCommentDetails {
 		//this is the _id of the blogComment that we want to update
 		_id: string;
 		//this field is the field that can be modified on blogComment
-		blogCommentStatus: BlogCommentStatus;
+		BlogCommentStatus: BlogCommentStatus;
 	};
 	get: RBlogComment;
 }
@@ -46,16 +46,19 @@ export const updateBlogComment: UpdateBlogComment = async (
 	const detailsIsRight = checkUpdateBlogComment({ details });
 	detailsIsRight !== true && throwError(detailsIsRight[0].message);
 	const {
-		set: { _id, blogCommentStatus: newBlogCommentStatus },
+		set: { _id, BlogCommentStatus: newBlogCommentStatus },
 		get,
 	} = details;
-	const blogComment = await blogComments.findOne({ _id: _id });
-	console.log(blogComment);
+	console.log(newBlogCommentStatus);
+	const blogComment = await blogComments!.findOne({
+		_id: new Bson.ObjectID(_id),
+	});
+	console.log(blogComment, "------blogComment");
 
 	//change totalComment in BlogPost collection
 	await changeTotalBlogCommentsForPost(
 		blogComment?.blogPost._id,
-		blogComment?.commentStatus, //previous comment status
+		blogComment?.blogCommentStatus, //previous comment status
 		newBlogCommentStatus //new blog status
 	);
 
@@ -66,9 +69,10 @@ export const updateBlogComment: UpdateBlogComment = async (
 		}
 	);
 
-	const updatedBlogComment = await blogComments.findOne({
+	const updatedBlogComment = await blogComments!.findOne({
 		_id: new Bson.ObjectID(_id),
 	});
+	console.log(updatedBlogComment, "---------------updatedBlogComment");
 	return updatedBlogComment;
 	// TODO: handle the get part!(I need to return the foundNewBlogCategory and the get part)
 	// return get

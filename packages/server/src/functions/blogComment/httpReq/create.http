@@ -6,11 +6,13 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"comment",
+            "name":"testing now1",
             "email":"masi@yahoo.com",
             "content":"111",
             "isReplierBlogComment":false,
-            "repliedBlogCommentId":"111"
+            "repliedBlogCommentId":"111",
+            "blogCommentStatus":"PENDING",
+            "blogPost":"5ff40cdc073d4dea0d0cc3de"
         },
         "get":{
             
