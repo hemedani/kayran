@@ -49,23 +49,23 @@ export const updateBlogComment: UpdateBlogComment = async (
 		set: { _id, BlogCommentStatus: newBlogCommentStatus },
 		get,
 	} = details;
-	console.log(newBlogCommentStatus);
+
 	const blogComment = await blogComments!.findOne({
 		_id: new Bson.ObjectID(_id),
 	});
 	console.log(blogComment, "------blogComment");
 
-	//change totalComment in BlogPost collection
+	// change totalComment in BlogPost collection
 	await changeTotalBlogCommentsForPost(
-		blogComment?.blogPost._id,
-		blogComment?.blogCommentStatus, //previous comment status
+		blogComment!.blogPost,
+		blogComment!.blogCommentStatus, //previous comment status
 		newBlogCommentStatus //new blog status
 	);
 
 	await blogComments.updateOne(
 		{ _id: new Bson.ObjectID(_id) },
 		{
-			blogCommentStatus: newBlogCommentStatus,
+			$set: { blogCommentStatus: newBlogCommentStatus },
 		}
 	);
 

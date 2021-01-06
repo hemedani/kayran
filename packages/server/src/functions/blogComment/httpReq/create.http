@@ -6,13 +6,13 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"testing now1",
+            "name":"child of that has no id of refs",
             "email":"masi@yahoo.com",
-            "content":"111",
-            "isReplierBlogComment":false,
-            "repliedBlogCommentId":"111",
-            "blogCommentStatus":"PENDING",
-            "blogPost":"5ff40cdc073d4dea0d0cc3de"
+            "content":"parent",
+            "isReplierBlogComment":true,
+            "blogCommentStatus":"ACCEPT",
+            "blogPostId":"5ff4c1025818313663b2e40a",
+            "repliedBlogCommentId":"5ff5699a302f36e08febf2dc"
         },
         "get":{
             
