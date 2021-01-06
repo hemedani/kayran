@@ -3,15 +3,16 @@ import { createBlogTag } from "./createBlogTag.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
 import { throwError } from "../../utils/throwErr.ts";
 import { BlogTag } from "../../schemas/blogTag.ts";
+import { deleteBlogTag } from "./deleteBlogTag.ts";
 const v = new FastestValidator();
 const check = v.compile({
 	doit: {
 		type: "enum",
-		values: ["createBlogTag", "updateBlogTag"],
+		values: ["createBlogTag", "updateBlogTag", "deleteBlogTag"],
 	},
 });
 
-export type BlogTagDoit = "createBlogTag" | "updateBlogTag";
+export type BlogTagDoit = "createBlogTag" | "updateBlogTag" | "deleteBlogTag";
 
 type BlogTagFns = (
 	doit: BlogTagDoit,
@@ -25,6 +26,7 @@ export const blogTagFns: BlogTagFns = (doit, details, context) => {
 		? {
 				["createBlogTag"]: async () => await createBlogTag(details, context),
 				["updateBlogTag"]: async () => await updateBlogTag(details, context),
+				["deleteBlogTag"]: async () => await deleteBlogTag(details, context),
 		  }[doit]()
 		: throwError(checkDoit[0].message);
 };
