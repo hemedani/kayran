@@ -49,7 +49,7 @@ export const updateBlogCategory: UpdateBlogCategory = async (
 		get,
 	} = details;
 
-	const updatedBlogCategory = await blogCategories.updateOne(
+	await blogCategories.updateOne(
 		{ _id: new Bson.ObjectID(_id) },
 		{ $set: { name, enName, icon, description } }
 	);
@@ -60,8 +60,8 @@ export const updateBlogCategory: UpdateBlogCategory = async (
 
 	//2 update category in post collection where posts are refer to this category
 	await blogPosts.updateMany(
-		{ "postBlogCategories._id": new Bson.ObjectID(_id) },
-		{ $set: { "postBlogCategories.$": foundNewBlogCategory } }
+		{ "blogCategories._id": new Bson.ObjectID(_id) },
+		{ $set: { "blogCategories.$": foundNewBlogCategory } }
 	);
 
 	return foundNewBlogCategory;

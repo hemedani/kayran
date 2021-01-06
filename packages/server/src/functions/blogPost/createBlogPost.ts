@@ -99,8 +99,8 @@ export const createBlogPost: CreateBlogPost = async (details, context) => {
 		summary,
 		content,
 		photo,
-		postBlogCategories,
-		postBlogTags,
+		blogCategories: postBlogCategories,
+		blogTags: postBlogTags,
 		promotion,
 		//TODO:the user should be specified
 	});
