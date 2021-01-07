@@ -8,7 +8,6 @@ export interface BlogCategory extends Base {
 	enName: string;
 	icon: string;
 	description: string;
-	blogPosts?: BlogPost[];
 }
 
 export interface RBlogCategory extends RBase {
@@ -16,7 +15,6 @@ export interface RBlogCategory extends RBase {
 	enName?: RType;
 	iconUrl?: RType;
 	description?: RType;
-	blogPosts?: RBlogPost;
 }
 
 export const blogCategorySelectable = (depth: number = 4) => {

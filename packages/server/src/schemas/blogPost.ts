@@ -20,7 +20,6 @@ export interface BlogPost extends Base {
 	photo?: string;
 	author?: User; //TODO:user is not optional
 	blogCategories: BlogCategory[];
-	replierBlogCommentRef: Bson.ObjectId[]; //the id of the comments of this post
 	blogTags?: BlogTag[];
 	likeUsers?: Bson.ObjectID[];
 	blogComments?: BlogComment[]; //about 50 last comments are embedded here
