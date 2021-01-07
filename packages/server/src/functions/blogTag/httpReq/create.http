@@ -6,7 +6,7 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"update tag"
+            "name":"tag for delete3"
         },
         "get":{
             "_id": 1,

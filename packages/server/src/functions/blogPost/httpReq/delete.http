@@ -1,4 +1,3 @@
-
 POST http://localhost:8000/funql HTTP/1.1
 content-type: application/json
 token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vyc0lkIjoiNWZlOThkNDZmNjAyZjJkMmRiZGI2YjU0In0.W0oiBUtViIMJfvJF2sSzG0PQT1rCwc2r4blAsqSi_Tky3kvh7MBtnvwlaBjRzoWZqLVqU9MoMElaAHYMY4Ky-Q
@@ -6,19 +5,13 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"testing delete post",
-            "email":"masi@yahoo.com",
-            "content":"parent",
-            "isReplierBlogComment":false,
-            "blogCommentStatus":"ACCEPT",
-            "blogPostId":"5ff5b06a281d8a7be5101d93"
+            "_id":"5ff2c40552a1dff1ca5c3770"
         },
         "get":{
-            
         }
     },
     "wants":{
-        "model":"BlogComment",
-        "doit":"createBlogComment"
+        "model":"BlogPost",
+        "doit":"deleteBlogPost"
     }
 }
