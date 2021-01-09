@@ -1,3 +1,4 @@
+import { Context } from "./../utils/context.ts";
 import { getBlogPost } from "./funcs/getBlogPost.ts";
 import { handleBlogPostPromotion } from "./utills/handleBlogPostPromotion.ts";
 import { BlogTag, blogTags } from "./../../schemas/blogTag.ts";
@@ -52,14 +53,9 @@ interface createBlogPostDetails {
 	get: RBlogPost;
 }
 
-interface createBlogPostContext {
-	token: string | null;
-	user?: User;
-}
-
 type CreateBlogPost = (
 	details: createBlogPostDetails,
-	context: createBlogPostContext
+	context: Context
 ) => Promise<Partial<BlogPost>>;
 
 /**
