@@ -57,7 +57,7 @@ export const updateBlogComment: UpdateBlogComment = async (
 
 	// change totalComment in BlogPost collection
 	await changeTotalBlogCommentsForPost(
-		blogComment!.blogPost,
+		blogComment!.blogPostId,
 		blogComment!.blogCommentStatus, //previous comment status
 		newBlogCommentStatus //new blog status
 	);

@@ -18,7 +18,7 @@ export interface BlogComment extends Base {
 	isReplierBlogComment: boolean;
 	repliedBlogCommentId?: Bson.ObjectID;
 	blogCommentStatus: BlogCommentStatus;
-	blogPost: BlogPost;
+	blogPostId: Bson.ObjectID;
 	replierBlogCommentRefs: Bson.ObjectID[] /* the replied comments of a comment */;
 }
 
@@ -29,7 +29,7 @@ export interface RBlogComment extends RBase {
 	isReplierBlogComment?: RBlogComment;
 	repliedBlogCommentId?: RType;
 	commentStatus?: RType;
-	blogPost: RBlogPost;
+	blogPostId: RBlogPost;
 	replierBlogCommentRefs?: RBlogComment[];
 }
 
