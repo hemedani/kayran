@@ -21,7 +21,7 @@ export interface BlogPost extends Base {
 	author?: User; //TODO:user is not optional
 	blogCategories: BlogCategory[];
 	blogTags?: BlogTag[];
-	likeUsers?: Bson.ObjectID[];
+	likedUsers?: Bson.ObjectID[];
 	blogComments?: BlogComment[]; //about 50 last comments are embedded here
 	promotion?: number;
 	totalViews?: number;
