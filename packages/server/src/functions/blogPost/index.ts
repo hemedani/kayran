@@ -1,8 +1,8 @@
-import { createBlogPost } from "./createBlogPost.ts";
 import FastestValidator from "https://cdn.pika.dev/fastest-validator@^1.8.0";
-import { updateBlogPost } from "./updateBlogPost.ts";
 import { throwError } from "../../utils/throwErr.ts";
-import { deleteBlogPost } from "./deleteBlogPost.ts";
+import { deleteBlogPost } from "./deleteBlogPost.fn.ts";
+import { createBlogPost } from "./createBlogPost.fn.ts";
+import { updateBlogPost } from "./updateBlogPost.fn.ts";
 
 const v = new FastestValidator();
 const check = v.compile({

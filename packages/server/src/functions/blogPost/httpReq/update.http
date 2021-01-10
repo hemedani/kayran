@@ -7,13 +7,13 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
     "details":{
 
         "set":{
-            "_id":"5ff40cdc073d4dea0d0cc3de",
+            "_id":"5ffacee4193d33a7460ef07c",
 				"title":"hi",
 				"summary":"hi",
 				"content":"hi",
 				"photo":"hi",
-				"blogCategoriesRef":["5ff2c08737b1c00909ec335a"],
-				"blogTagsRef":["5ff2c05337b1c00909ec3355"],
+				"blogCategoryIDs":["5ff2c08737b1c00909ec335a"],
+				"blogTagIDs":["5ff59433ca26fb07541205d1"],
 				"promotion":1
         },
         "get":{

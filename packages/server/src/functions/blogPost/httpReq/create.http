@@ -6,14 +6,13 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-		"title": "testing delete post",
+		"title": "testing delete Comment",
 		"summary": "post1 sum",
 		"content": "string",
-		"blogCategoriesRef": ["5ff2c07337b1c00909ec3359"],
+		"blogCategoryIDs": [],
 		"photo":"111",
-        "blogTagsRef":["5ff5942cca26fb07541205d0"],
-		"promotion": 1,
-        "replierBlogCommentRefs":[]
+        "blogTagIDs":[],
+		"promotion": 1
         },
         "get":{
             
