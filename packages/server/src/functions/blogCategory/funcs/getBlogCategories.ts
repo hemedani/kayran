@@ -22,12 +22,12 @@ export const getBlogCategories: GetBlogCategoriesFn = async ({
 		projection,
 	});
 	let returnBlogCategories = await foundedBlogCategories.toArray();
-	if (getObj.blogPosts)
-		returnBlogCategories = await populateMany(
-			returnBlogCategories,
-			getBlogPosts,
-			"states",
-			getObj.blogPosts
-		);
+	// if (getObj.blogPosts)
+	// 	returnBlogCategories = await populateMany(
+	// 		returnBlogCategories,
+	// 		getBlogPosts,
+	// 		"states",
+	// 		getObj.blogPosts
+	// 	);
 	return returnBlogCategories;
 };

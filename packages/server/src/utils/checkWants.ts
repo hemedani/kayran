@@ -19,6 +19,7 @@ const check = v.compile({
 					"BlogTag",
 					"BlogCategory",
 					"BlogComment",
+					"BlogPost",
 				],
 			},
 		},
@@ -27,7 +28,13 @@ const check = v.compile({
 
 export interface body {
 	wants: {
-		model: "User" | "City" | "BlogTag" | "BlogCategory" | "BlogComment";
+		model:
+			| "User"
+			| "City"
+			| "BlogTag"
+			| "BlogCategory"
+			| "BlogComment"
+			| "BlogPost";
 		doit: string;
 	};
 	details: any;

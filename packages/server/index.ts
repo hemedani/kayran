@@ -1,3 +1,5 @@
+import { BlogPostDoit, blogPostFns } from "./src/functions/blogPost/index.ts";
+
 import {
 	BlogCommentDoit,
 	blogCommentFns,
@@ -27,7 +29,8 @@ type model =
 	| "Country"
 	| "BlogTag"
 	| "BlogCategory"
-	| "BlogComment";
+	| "BlogComment"
+	| "BlogPost";
 
 for await (const req of s) {
 	try {
@@ -55,6 +58,8 @@ for await (const req of s) {
 					await blogCategoryFns(doit as BlogCategoryDoit, details, context),
 				["BlogComment"]: async () =>
 					await blogCommentFns(doit as BlogCommentDoit, details, context),
+				["BlogPost"]: async () =>
+					await blogPostFns(doit as BlogPostDoit, details, context),
 			}[model]());
 
 		req.respond({

@@ -52,7 +52,8 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 {
     "details":{
         "set":{
-            "name":"first tag"
+            "name":"first tag",
+            "enName":"kjhgf"
         },
         "get":{
             "_id": 1,

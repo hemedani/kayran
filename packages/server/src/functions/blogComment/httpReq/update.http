@@ -5,22 +5,18 @@ token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjQ2OTMwMDQuNDY1LCJ1c2Vy
 
 {
     "details":{
+
         "set":{
-            "name":"first Child",
-            "email":"masi@yahoo.com",
-            "content":"parent",
-            "isReplierBlogComment":true,
-            "repliedBlogCommentId":"5ff9761b9239a6666edc439a",
-            "blogCommentStatus":"ACCEPT",
-            "blogPostId":"5ff965ce858a5e9455e383a9"
-            
+            "_id":"5ff56bf83007901966678857",
+            "BlogCommentStatus":"REJECT"
         },
         "get":{
-            
+            "_id":1,
+            "commentStatus":1
         }
     },
     "wants":{
         "model":"BlogComment",
-        "doit":"createBlogComment"
+        "doit":"updateBlogComment"
     }
 }

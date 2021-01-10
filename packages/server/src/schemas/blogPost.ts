@@ -18,15 +18,15 @@ export interface BlogPost extends Base {
 	summary: string;
 	content: string;
 	photo?: string;
-	author: User;
+	author?: User; //TODO:user is not optional
 	blogCategories: BlogCategory[];
-	replierBlogCommentRefs: Bson.ObjectId[]; //the id of the comments of this post
 	blogTags?: BlogTag[];
-	likeUsers?: Bson.ObjectID[];
-	totalLikes?: number; //the total number of likes fo the post
+	likedUsers?: Bson.ObjectID[];
 	blogComments?: BlogComment[]; //about 50 last comments are embedded here
 	promotion?: number;
 	totalViews?: number;
+	totalBlogComments?: number;
+	totalLikes?: number; //the total number of likes fo the post
 }
 export interface RBlogPost extends RBase {
 	tittle?: RType;
@@ -41,6 +41,7 @@ export interface RBlogPost extends RBase {
 	promotion?: RType;
 	totalViews?: RType;
 	blogComments?: RBlogComment;
+	totalBlogComments?: RType;
 }
 
 /**
@@ -58,6 +59,7 @@ export const blogPostSelectable = (depth: number = 4): any => {
 		totalLikes: fieldType,
 		promotion: fieldType,
 		totalViews: fieldType,
+		totalBlogComments: fieldType,
 	};
 	return depth > 0
 		? {
@@ -67,7 +69,7 @@ export const blogPostSelectable = (depth: number = 4): any => {
 					optional: true,
 					props: blogTagSelectable(depth),
 				},
-				blogCategories: {
+				blogCategoriesRef: {
 					type: "object",
 					optional: true,
 					props: blogCategorySelectable(depth),
@@ -91,4 +93,4 @@ export const blogPostSelectable = (depth: number = 4): any => {
 		: returnObj;
 };
 
-export const blogPosts = db.collection<BlogPost>("blogPosts");
+export const blogPosts = db.collection<BlogPost>("BlogPosts");

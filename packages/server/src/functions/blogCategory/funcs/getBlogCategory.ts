@@ -18,11 +18,11 @@ export const getBlogCategory: GetBlogCategoryFn = async ({ _id, get }) => {
 		{ projection }
 	);
 	const doRelation = async (blogCategory: BlogCategory, get: RBlogCategory) => {
-		if (get.blogPosts)
-			blogCategory.blogPosts = await getBlogPosts({
-				filter: { blogCategory: blogCategory._id },
-				getObj: get.blogPosts,
-			});
+		// if (get.blogPosts)
+		// 	blogCategory.blogPosts = await getBlogPosts({
+		// 		filter: { blogCategory: blogCategory._id },
+		// 		getObj: get.blogPosts,
+		// 	});
 		return blogCategory;
 	};
 	return foundedBlogCategory

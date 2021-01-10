@@ -23,18 +23,18 @@ export const getBlogPost: GetBlogPostFn = async ({ _id, get }) => {
 		// 	blogPost.author = await getUser({
 
 		// 	});
-		if (get.blogCategories)
-			blogPost.blogCategories = await getBlogCategories({
-				filter: { blogCategory: { _id: { $in: blogPost.blogCategories } } },
-				getObj: get.blogCategories,
-			});
-		if (get.blogTags)
-			blogPost.blogTags = await getBlogTags({
-				filter: { blogTag: { _id: { $in: blogPost.blogTags } } },
-				getObj: get.blogTags,
-			});
-		//search for comments that their blogPostId is the same as this post
+		// if (get.blogCategoriesRef)
 		if (get.blogComments)
+			// blogPost.blogCategoriesRef = await getBlogCategories({
+			// 	filter: { blogCategory: { _id: { $in: blogPost.blogCategoriesRef } } },
+			// 	getObj: get.blogCategoriesRef,
+			// });
+			// if (get.blogTagsRefs)
+			// 	blogPost.blogTagsRef = await getBlogTags({
+			// 		filter: { blogTag: { _id: { $in: blogPost.blogTagsRef } } },
+			// 		getObj: get.blogTagsRefs,
+			// 	});
+			//search for comments that their blogPostId is the same as this post
 			blogPost.blogComments = await getBlogComments({
 				filter: { blogComment: { blogPost: blogPost._id } },
 				getObj: get.blogComments,

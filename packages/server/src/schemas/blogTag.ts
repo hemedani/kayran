@@ -1,9 +1,10 @@
+import { Base } from "./utils/bases/base.ts";
 import db from "../../db.ts";
 import { fieldType } from "./utils/index.ts";
 import { RType } from "./utils/rType.ts";
 import { baseSelectableFields, RBase } from "./utils/bases/index.ts";
 
-export interface BlogTag {
+export interface BlogTag extends Base {
 	name: string;
 }
 /**
@@ -11,7 +12,7 @@ export interface BlogTag {
  * @interface
  */
 export interface RBlogTag extends RBase {
-	name?: RType;
+	name: RType;
 }
 
 export const blogTagSelectable = (depth: number = 4) => {
