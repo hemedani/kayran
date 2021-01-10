@@ -1,0 +1,36 @@
+POST Request to "http://localhost:4000/graphql"
+
+1- for upload image:
+   goto body of postman and select form-data and insert this data:
+
+    key: operations
+    value: {"query":"mutation imageUpload($image:Upload!) {\n  imageUpload(image: $image)\n {\n url\n}\n}"}
+
+    key: map
+    value: {"0": ["variables.image"]}
+
+    key: 0 (and select file type for value)
+    value: choose image
+
+    =>this return url of image
+
+
+img1: 1680e1d89-1fc7-42f3-9e07-adbe18b3fd8d.jpg
+img2: 2549caa83-301d-4f0a-af80-a9a8effb3976.jpg
+img3: 388a658e8-5f68-4529-ae4c-2c433ec92c35.jpg
+img4: 44d4aed81-d75b-40e4-a14f-cc4658d75b7d.jpg
+avatar : avatarbadbb6a6-4523-4a2e-ba7d-37dc9bd81ad9.png
+post1 (main image): post1d2943e95-ea81-423d-b57c-49e444960eae.jpg
+post2 (inner image): post21c1483ad-94fb-47cc-96f1-05902c642a6a.jpg
+
+2- create category of posts: 
+
+    key: operations
+    value: {"query":"mutation createBlogCategory($name: String!,$enName: String!) {\n  createBlogCategory(data: {\n
+       name: $name\n
+       enName: $enName
+    }\n) {\n url\n}\n}"}
+
+   key: map
+   value: {"0": ["variables.image"]} 
+ 
